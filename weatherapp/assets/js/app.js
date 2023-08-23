@@ -1,3 +1,14 @@
+
+
+$('#splash').show();
+
+setTimeout(function() { 
+    $('#splash').hide();
+    $('#content').show();
+}, 3000);
+
+
+
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
         const latitude = position.coords.latitude;
@@ -21,8 +32,6 @@ function getWeather(lat, long) {
             },
             success: function (result) {
                 console.log(result);
-
-
                 document.getElementById('info-text').innerHTML = result.current.condition.text;
                 document.getElementById('logo').src = result.current.condition.icon;
                 var name = result.location.name;
@@ -31,14 +40,9 @@ function getWeather(lat, long) {
                 document.getElementById('location').innerHTML = name + ', ' + region + ', ' + nation;
                 document.getElementById('degrees').innerHTML = 'Temperature: ' + result.current.temp_c+' C';
                 document.getElementById('wd').innerHTML = 'Wind Direction: ' + result.current.wind_dir + ' Speed: ' + result.current.wind_kph;
-
-
-
-
             },
             error: function (error) {
                 console.log('Error ${error}');
-
             }
         })
     });
